@@ -1,0 +1,13 @@
+
+.inputText {
+    font-family: 'Source Sans Pro' !important;
+    font-size: 1.6rem !important;
+}
+
+.inputText .cm-editor {
+    min-height: 20vh !important;
+    max-height: 60vh !important;
+
+    resize: vertical;
+    overflow: auto !important;
+}

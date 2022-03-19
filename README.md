@@ -6,7 +6,7 @@ The project has 1 page that is composed of 4 components, namely: header, inputTe
 
 The application is currently being hosted on the [Vercel](https://vercel.com) platform to facilitate access. This platform not only enables the host of the application but also provides scripts for CI.
 
-Preview:
+## Preview:
 
 <img src="https://github.com/WeslynSouza/challenge-chart-plot/blob/master/github/preview.png">
 

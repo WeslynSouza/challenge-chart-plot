@@ -8,7 +8,7 @@ The application is currently being hosted on the [Vercel](https://vercel.com) pl
 
 Preview:
 
-<img src="https://github.com/WeslynSouza/challenge-chart-plot/github/preview.png">
+<img src="https://github.com/WeslynSouza/challenge-chart-plot/blob/master/github/preview.png">
 
 ## Libraries:
 

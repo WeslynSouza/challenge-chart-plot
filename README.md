@@ -17,3 +17,7 @@ In addition to the basic functionalities of React, some libraries were also used
 [React-CodeMirror](https://uiwjs.github.io/react-codemirror/): Library used to create a data input with the formatting of a JS IDE.
 
 [Nivo](https://nivo.rocks): Library used to create the graph used in the application, allowing the creation of a graph in lines along with a list of the items present in the graph.
+
+## Security:
+
+As a way to make the application more secure, all data passed in the input must be converted from string to json, sending an error if the data is not in the correct format, making it difficult for malicious functions to pass through the input. 

@@ -4,7 +4,7 @@ import './styles.css';
 
 function Chart(props) {
 
-    const { data, setData } = props;
+    const { data, setData, last } = props;
 
     function loadChart() {
         try {
@@ -80,10 +80,10 @@ function Chart(props) {
     }
 
     return(
-        <div className='chartArea'>
+        <div className={`chartArea ${last ? 'lastChartArea' : ''}`}>
             <ResponsiveLine 
                 data={loadChart()}
-                margin={{ top: 40, right: 270, bottom: 50, left: 60 }}
+                margin={{ top: 40, right: 270, bottom: 40, left: 60 }}
                 xScale={{ type: 'point'}}
                 yScale={{
                     type: 'linear',

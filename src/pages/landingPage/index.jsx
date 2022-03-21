@@ -62,7 +62,19 @@ function LandingPage () {
             }
         });
 
-        console.log(dataGroups);
+        return (
+            <>
+                {dataGroups.map((items, index) => {
+                    return (
+                        <Chart 
+                            key={items[0].timestamp} 
+                            data={items} 
+                            setData={setData} 
+                            last={index === dataGroups.length - 1 ? true : false}/>
+                    )
+                })}
+            </>
+        );
     }
 
     loadCharts();

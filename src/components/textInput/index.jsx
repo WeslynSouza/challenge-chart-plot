@@ -1,6 +1,6 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import '../styles/textInput.css';
+import './styles.css';
 
 function TextInput(props) {
 

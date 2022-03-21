@@ -1,67 +1,74 @@
 import { ResponsiveLine } from '@nivo/line';
 
-import '../styles/chart.css';
+import './styles.css';
 
 function Chart(props) {
 
-    const { data } = props;
+    const { data, setData } = props;
 
     function loadChart() {
-        const span = data.find(item => item.type === 'span');
-        const chartItens = [];
-        
-        data.forEach(dataItem => {
-            if(dataItem.type === 'data' && dataItem.timestamp >= span.begin && dataItem.timestamp <= span.end){
-                const chartIndice = chartItens.findIndex(item => item.os === dataItem.os && item.browser === dataItem.browser);
-                if(chartIndice !== -1){
-                    chartItens[chartIndice].chartInfo.push({
-                        timestamp: dataItem.timestamp,
-                        min_response_time: dataItem.min_response_time,
-                        max_response_time:  dataItem.max_response_time
-                    });
-                } else {
-                    chartItens.push({
-                        os: dataItem.os,
-                        browser: dataItem.browser,
-                        chartInfo: [{
+        try {
+            const span = data.find(item => item.type === 'span');
+            const chartItens = [];
+            
+            data.forEach(dataItem => {
+                if(dataItem.type === 'data' && dataItem.timestamp >= span.begin && dataItem.timestamp <= span.end){
+                    const chartIndice = chartItens.findIndex(item => item.os === dataItem.os && item.browser === dataItem.browser);
+                    if(chartIndice !== -1){
+                        chartItens[chartIndice].chartInfo.push({
                             timestamp: dataItem.timestamp,
                             min_response_time: dataItem.min_response_time,
                             max_response_time:  dataItem.max_response_time
-                        }]
-                    });
-                }
-            } 
-        });
-
-        const itensChart = [];
-
-        for(const indice in chartItens) {
-            const chartData1 = {
-                "id": `${chartItens[indice].os} ${chartItens[indice].browser} Min Response Time`,
-                "data": [{
-                    x: chartItens[indice].chartInfo[0].timestamp,
-                    y: chartItens[indice].chartInfo[0].min_response_time
-                },{
-                    x: chartItens[indice].chartInfo[1].timestamp,
-                    y: chartItens[indice].chartInfo[1].min_response_time
-                }]
-            };
-
-            const chartData2 = {
-                "id": `${chartItens[indice].os} ${chartItens[indice].browser} Max Response Time`,
-                "data": [{
-                    x: chartItens[indice].chartInfo[0].timestamp,
-                    y: chartItens[indice].chartInfo[0].max_response_time
-                },{
-                    x: chartItens[indice].chartInfo[1].timestamp,
-                    y: chartItens[indice].chartInfo[1].max_response_time
-                }]
-            };
-
-            itensChart.push(chartData1, chartData2)
+                        });
+                    } else {
+                        chartItens.push({
+                            os: dataItem.os,
+                            browser: dataItem.browser,
+                            chartInfo: [{
+                                timestamp: dataItem.timestamp,
+                                min_response_time: dataItem.min_response_time,
+                                max_response_time:  dataItem.max_response_time
+                            }]
+                        });
+                    }
+                } 
+            });
+    
+            const itensChart = [];
+    
+            for(const indice in chartItens) {
+                const chartData1 = {
+                    "id": `${chartItens[indice].os} ${chartItens[indice].browser} Min Response Time`,
+                    "data": [{
+                        x: chartItens[indice].chartInfo[0].timestamp,
+                        y: chartItens[indice].chartInfo[0].min_response_time
+                    },{
+                        x: chartItens[indice].chartInfo[1].timestamp,
+                        y: chartItens[indice].chartInfo[1].min_response_time
+                    }]
+                };
+    
+                const chartData2 = {
+                    "id": `${chartItens[indice].os} ${chartItens[indice].browser} Max Response Time`,
+                    "data": [{
+                        x: chartItens[indice].chartInfo[0].timestamp,
+                        y: chartItens[indice].chartInfo[0].max_response_time
+                    },{
+                        x: chartItens[indice].chartInfo[1].timestamp,
+                        y: chartItens[indice].chartInfo[1].max_response_time
+                    }]
+                };
+    
+                itensChart.push(chartData1, chartData2)
+            }
+    
+            return itensChart;
+        } catch (e) {
+            console.warn('Error processing chart data!');
+            alert('Invalid data, please correct the data and send it again! ')
+            setData([]);
+            return [];
         }
-
-        return itensChart;
     }
 
     if(data.length === 0) {

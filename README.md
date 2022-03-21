@@ -8,6 +8,8 @@ The application is currently being hosted on the [Vercel](https://vercel.com) pl
 
 ## Preview:
 
+https://challenge-chart-plot-nu.vercel.app
+
 <img src="https://github.com/WeslynSouza/challenge-chart-plot/blob/master/github/preview.png">
 
 ## Libraries:
